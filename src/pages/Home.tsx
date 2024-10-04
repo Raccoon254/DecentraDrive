@@ -5,30 +5,38 @@ import AOS from 'aos'; // Import AOS
 import cloudGif from '../assets/cloud.gif';
 import privateGif from '../assets/private.gif';
 import userGif from '../assets/user.gif';
+import backGround from '../assets/bg.jpg';
 
 // Initialize AOS animations
 AOS.init();
 
 const Home: React.FC = () => {
   return (
-    <div className="home bg-gray-900 text-white min-h-screen">
-      {/* Hero Section */}
-      <header className="home-header flex items-center justify-center flex-col py-16 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Welcome to DecentraDrive</h1>
-        <p className="text-lg md:text-xl mb-8 max-w-2xl">
+    <div className="home text-white min-h-screen">
+      <div className="relative min-h-[50vh]">
+      <div
+        style={{
+          backgroundImage: `url(${backGround})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+        className="absolute inset-0 opacity-5 bg-cover bg-center"
+      ></div>
+
+      <header className="absolute inset-0 flex items-center justify-center flex-col text-center z-10">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down text-white">
+          Welcome to Decentra
+        </h1>
+        <p className="text-lg md:text-xl mb-8 max-w-2xl text-white">
           A decentralized file storage solution built on the Internet Computer.
         </p>
         <Link to="/drive">
-          <button className="get-started-button bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300">
+          <button className="get-started-button bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg ring-2 ring-offset-1 ring-yellow-500 transition duration-300">
             Get Started
           </button>
         </Link>
-        <img
-          src="https://via.placeholder.com/800x400.png?text=Crypto+Banner"
-          alt="Crypto Banner"
-          className="mt-10 rounded-lg shadow-lg animate-fade-in-up"
-        />
       </header>
+    </div>
 
       {/* Features Section */}
       <section className="features py-16 bg-gray-800">
