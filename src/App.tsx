@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Decentralized Drive</h1>
+      <h1 className='text-blue-600'>Decentralized Drive</h1>
       <FileUpload />
       <FileList />
     </div>
