@@ -1,54 +1,146 @@
-# Vite + React + Motoko
+# DecentraDrive
 
-### Get started directly in your browser:
+DecentraDrive is a decentralized file storage application built with **React** and **Motoko**, running on the **Internet Computer**. It allows users to upload, store, and retrieve files in a decentralized manner, ensuring data integrity and availability without depending on centralized servers.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rvanasa/vite-react-motoko)
+## Features
 
-This template gives you everything you need to build a full-stack Web3 application on the [Internet Computer](https://internetcomputer.org/).
+- **Decentralized Storage**: Leverage the power of the Internet Computer for storing files securely.
+- **File Upload and Download**: Easily upload files and download them whenever needed.
+- **Scalable and Efficient**: Built to scale with the needs of users while maintaining efficiency.
+- **Modern Technologies**: Utilizes React for the frontend and Motoko for the backend.
 
-For an example of a real-world dapp built using this starter project, check out the [source code](https://github.com/dfinity/feedback) for DFINITY's [Developer Experience Feedback Board](https://dx.internetcomputer.org/).
+## Demo
 
-## 📦 Create a New Project
+![DecentraDrive Demo](./assets/decentradrive-demo.gif)
 
-Make sure that [Node.js](https://nodejs.org/en/) `>= 16` and [`dfx`](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove) `>= 0.14` are installed on your system.
+## Getting Started
 
-Run the following commands in a new, empty project directory:
+Follow these instructions to set up and run DecentraDrive on your local machine for development and testing purposes.
 
-```sh
-npx degit rvanasa/vite-react-motoko # Download this starter project
-dfx start --clean --background # Run dfx in the background
-npm run setup # Install packages, deploy canisters, and generate type bindings
+### Prerequisites
 
-npm start # Start the development server
+- **Node.js** (version 14 or later)
+- **npm** (version 6 or later)
+- **DFX SDK** (version 0.14.0 or later)
+- **Internet Computer Local Replica**
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/raccoon254/decentradrive.git
+   cd decentradrive
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the Internet Computer Local Replica**
+
+   ```bash
+   dfx start --background
+   ```
+
+4. **Deploy the Backend Canister**
+
+   ```bash
+   dfx deploy
+   ```
+
+5. **Start the Frontend Development Server**
+
+   ```bash
+   npm run frontend
+   ```
+
+6. **Access the Application**
+
+   Open your browser and navigate to `http://localhost:3000`.
+
+## Usage
+
+### Uploading a File
+
+1. Click on the **"Choose File"** button and select a file from your computer.
+2. Click the **"Upload"** button to upload the file to the decentralized storage.
+
+### Listing and Downloading Files
+
+1. The uploaded files will appear in the **Files** list.
+2. Click on the **"Download"** button next to a file to download it.
+
+## Project Structure
+
+```
+decentradrive/
+├── backend/
+│   └── Backend.mo         # Motoko backend actor
+├── src/
+│   ├── components/
+│   │   ├── FileUpload.tsx # Component for uploading files
+│   │   └── FileList.tsx   # Component for listing and downloading files
+│   ├── App.tsx            # Main application component
+│   ├── index.tsx          # Entry point for React
+│   └── declarations/      # Generated canister declarations
+├── assets/
+│   └── ...                # Images and other assets
+├── dfx.json               # DFX configuration
+├── package.json           # Project metadata and scripts
+└── README.md              # Project documentation
 ```
 
-When ready, run `dfx deploy --network ic` to deploy your application to the Internet Computer.
+## Scripts
 
-## 🛠️ Technology Stack
+- **Setup the Project**
 
-- [Vite](https://vitejs.dev/): high-performance tooling for front-end web development
-- [React](https://reactjs.org/): a component-based UI library
-- [TypeScript](https://www.typescriptlang.org/): JavaScript extended with syntax for types
-- [Sass](https://sass-lang.com/): an extended syntax for CSS stylesheets
-- [Prettier](https://prettier.io/): code formatting for a wide range of supported languages
-- [Motoko](https://github.com/dfinity/motoko#readme): a safe and simple programming language for the Internet Computer
-- [Mops](https://mops.one): an on-chain community package manager for Motoko
-- [mo-dev](https://github.com/dfinity/motoko-dev-server#readme): a live reload development server for Motoko
-- [@ic-reactor](https://github.com/B3Pay/ic-reactor): A suite of JavaScript libraries for seamless frontend development on the Internet Computer
+  ```bash
+  npm run setup
+  ```
 
-## 📚 Documentation
+- **Start the Development Servers**
 
-- [Vite developer docs](https://vitejs.dev/guide/)
-- [React quick start guide](https://react.dev/learn)
-- [Internet Computer docs](https://internetcomputer.org/docs/current/developer-docs/ic-overview)
-- [`dfx.json` reference schema](https://internetcomputer.org/docs/current/references/dfx-json-reference/)
-- [Motoko developer docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/)
-- [Mops usage instructions](https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/#/docs/install)
-- [@ic-reactor/react](https://b3pay.github.io/ic-reactor/modules/react.html)
+  ```bash
+  npm run start
+  ```
 
-## 💡 Tips and Tricks
+- **Build the Project**
 
-- Customize your project's code style by editing the `.prettierrc` file and then running `npm run format`.
-- Reduce the latency of update calls by passing the `--emulator` flag to `dfx start`.
-- Install a Motoko package by running `npx ic-mops add <package-name>`. Here is a [list of available packages](https://mops.one/).
-- Split your frontend and backend console output by running `npm run frontend` and `npm run backend` in separate terminals.
+  ```bash
+  npm run build
+  ```
+
+- **Run Tests**
+
+  ```bash
+  npm run test
+  ```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create your feature branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- **[Internet Computer](https://internetcomputer.org/)** - For providing the decentralized platform.
+- **[Motoko Language](https://internetcomputer.org/docs/current/developer-docs/build/languages/motoko/)** - For the powerful backend language.
+- **[React](https://reactjs.org/)** - For the frontend library.
+- **[ic-reactor](https://github.com/icdevs/ic-reactor)** - For simplifying React and Internet Computer integration.
+
+## Contact
+
+- **Email**: tomsteve187@gmail.com
+- **GitHub**: [@raccoon254](https://github.com/raccoon254)
