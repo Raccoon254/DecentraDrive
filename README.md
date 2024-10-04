@@ -36,28 +36,22 @@ Follow these instructions to set up and run DecentraDrive on your local machine 
 2. **Install Dependencies**
 
    ```bash
-   npm install
+   npm run setup
    ```
 
 3. **Start the Internet Computer Local Replica**
 
    ```bash
-   dfx start --background
+   dfx start --clean --background
    ```
 
-4. **Deploy the Backend Canister**
+4. **Start the server**
 
    ```bash
-   dfx deploy
+   npm start
    ```
 
-5. **Start the Frontend Development Server**
-
-   ```bash
-   npm run frontend
-   ```
-
-6. **Access the Application**
+5. **Access the Application**
 
    Open your browser and navigate to `http://localhost:3000`.
 
