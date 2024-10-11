@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useQueryCall } from '@ic-reactor/react';
-import '../App.css';
+import { getFileType } from '../utils/fileHelpers';
 
 const FileList: React.FC = () => {
   const { call: listFiles, data: files } = useQueryCall({
@@ -33,30 +33,51 @@ const FileList: React.FC = () => {
   };
 
   return (
-    <div className="file-list bg-white p-6 rounded-lg shadow-md interactive">
-      <h2 className="text-2xl font-bold mb-4 text-interactive">Files</h2>
+    <div className="rounded-lg p-6 shadow-lg">
+      <h2 className="text-2xl font-semibold text-blue-300 mb-6">
+        <i className="fas fa-folder-open mr-3 text-blue-400"></i> Files
+      </h2>
       {files ? (
-        <ul className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {files.map((name: string, index: number) => (
-            <li key={index} className="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-200 transition interactive">
-              <div className="flex items-center">
-                <i className="fas fa-file-alt text-gray-600 mr-3"></i> {/* File Icon */}
-                <span className="text-lg text-gray-800">{name}</span>
+            <div key={index} className="bg-gray-900 interactive bg-opacity-30 ring-2 ring-offset-2 ring-gray-800 ring-offset-slate-950 p-4 rounded-xl shadow-md hover:bg-gray-950 transition-colors">
+              <div className="flex items-center mb-3">
+                <i className={`fas fa-${getFileIconClass(getFileType(name))} text-blue-300 text-2xl mr-3`}></i>
+                <span className="flex-grow text-gray-200 truncate">{name}</span>
               </div>
-              <button
+              <div className="flex justify-end">
+              <button 
+                className="w-1/3 bg-blue-600 interactive hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors flex items-center justify-center"
                 onClick={() => handleDownload(index)}
-                className="download-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition duration-300 interactive"
               >
-                <i className="fas fa-download mr-2"></i>Download
+                <i className="fas fa-download mr-2"></i> Download
               </button>
-            </li>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p className="text-gray-600">Loading files...</p>
+        <div className="text-gray-400 flex center flex-col italic">
+          <div className='center'>
+          <span className="loading loading-ring text-center loading-lg"></span>
+          </div>
+          Loading files...
+        </div>
       )}
     </div>
   );
+};
+
+const getFileIconClass = (fileType: string): string => {
+  switch (fileType) {
+    case 'image': return 'file-image';
+    case 'video': return 'file-video';
+    case 'archive': return 'file-archive';
+    case 'pdf': return 'file-pdf';
+    case 'word': return 'file-word';
+    case 'excel': return 'file-excel';
+    default: return 'file';
+  }
 };
 
 export default FileList;
